@@ -2,67 +2,57 @@
 <html lang="ar" dir="rtl" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
-    <title>Optima Code | Pro Level</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Optima Code | Digital Architecture</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@300;800&display=swap');
-        body { font-family: 'Tajawal', sans-serif; background-color: #020202; }
-        
-        /* تأثير النيون للوجو */
-        .neon-logo { filter: drop-shadow(0 0 15px rgba(168, 85, 247, 0.6)); }
-        
-        /* كاردس بلمسة 3D */
-        .glass-card {
-            background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(15px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-        .glass-card:hover {
-            transform: translateY(-20px) scale(1.02);
-            border-color: #a855f7;
-            box-shadow: 0 20px 40px rgba(168, 85, 247, 0.2);
-        }
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;400;700;900&display=swap');
+        body { font-family: 'Inter', sans-serif; background: #0a0a0a; color: #ffffff; }
+        .glass { background: rgba(255, 255, 255, 0.02); backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.05); }
+        .text-gradient { background: linear-gradient(90deg, #ffffff, #666666); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
     </style>
 </head>
-<body class="text-white overflow-x-hidden">
+<body>
+
+    <!-- Header -->
+    <nav class="max-w-7xl mx-auto px-6 py-8 flex justify-between items-center">
+        <img src="logo.png" alt="Optima Code" class="h-10 w-auto">
+        <a href="mailto:optimacodee@gmail.com" class="text-sm font-light tracking-widest uppercase border-b border-white hover:border-gray-500 transition-all">Contact</a>
+    </nav>
 
     <!-- Hero -->
-    <section class="h-screen flex flex-col justify-center items-center relative">
-        <div class="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,_rgba(168,85,247,0.15),_transparent)]"></div>
-        
-        <img src="logo.png" alt="Optima Code" class="w-32 mb-10 neon-logo animate-pulse">
-        
-        <h1 class="text-7xl md:text-9xl font-black mb-6 tracking-tighter">OPTIMA<span class="text-purple-500">CODE</span></h1>
-        <p class="text-gray-400 text-xl font-light mb-12">نصنع المستقبل البرمجي بلمسة فنية</p>
-        
-        <a href="mailto:optimacodee@gmail.com" class="px-12 py-5 bg-white text-black font-bold text-lg rounded-full hover:bg-purple-500 hover:text-white transition-all duration-300">
-            احجز مشروعك الآن
-        </a>
-    </section>
+    <main class="max-w-7xl mx-auto px-6 py-24">
+        <section class="mb-32">
+            <h1 class="text-6xl md:text-9xl font-black mb-10 leading-none">
+                <span class="text-gradient">OPTIMA</span><br>
+                <span class="text-gray-500">CODE</span>
+            </h1>
+            <p class="max-w-xl text-xl font-light text-gray-400">
+                نحن لا نبني مجرد مواقع، نحن نصمم بنية تحتية رقمية ترفع من قيمة مشروعك. دقة في التنفيذ، رؤية في التصميم.
+            </p>
+        </section>
 
-    <!-- Services -->
-    <section class="container mx-auto px-6 py-32">
-        <div class="grid md:grid-cols-3 gap-8">
-            <div class="glass-card p-10 rounded-[2rem]">
-                <div class="text-purple-500 text-5xl mb-6">🚀</div>
-                <h3 class="text-2xl font-bold mb-4">الابتكار الرقمي</h3>
-                <p class="text-gray-400">نحول أفكارك لمواقع ذات أداء فائق وتجربة مستخدم عالمية.</p>
+        <!-- Services -->
+        <section class="grid md:grid-cols-2 gap-px bg-gray-900 border border-gray-900">
+            <div class="p-12 bg-[#0a0a0a] hover:bg-[#111] transition-colors">
+                <h2 class="text-xs tracking-[0.2em] text-gray-500 uppercase mb-6">01. Development</h2>
+                <h3 class="text-3xl font-bold mb-4">هندسة المواقع</h3>
+                <p class="text-gray-400 leading-relaxed">تطوير برمجيات تعتمد على السرعة، الأمان، وقابلية التوسع المستقبلي.</p>
             </div>
             
-            <div class="glass-card p-10 rounded-[2rem]">
-                <div class="text-purple-500 text-5xl mb-6">👁️</div>
-                <h3 class="text-2xl font-bold mb-4">الهوية البصرية</h3>
-                <p class="text-gray-400">تصاميم استراتيجية تعطي لمشروعك قوة وحضور في السوق.</p>
+            <div class="p-12 bg-[#0a0a0a] hover:bg-[#111] transition-colors">
+                <h2 class="text-xs tracking-[0.2em] text-gray-500 uppercase mb-6">02. Strategy</h2>
+                <h3 class="text-3xl font-bold mb-4">الهوية البصرية</h3>
+                <p class="text-gray-400 leading-relaxed">بناء شخصية رقمية تفرض وجودها في السوق وتجذب الفئة المستهدفة.</p>
             </div>
+        </section>
+    </main>
 
-            <div class="glass-card p-10 rounded-[2rem]">
-                <div class="text-purple-500 text-5xl mb-6">⚡</div>
-                <h3 class="text-2xl font-bold mb-4">أنظمة ذكية</h3>
-                <p class="text-gray-400">أدوات مخصصة لأتمتة أعمالك ورفع كفاءة فريقك.</p>
-            </div>
-        </div>
-    </section>
+    <!-- Footer -->
+    <footer class="max-w-7xl mx-auto px-6 py-20 border-t border-gray-900 text-center">
+        <p class="text-gray-600 mb-8">OPTIMA CODE © 2026</p>
+        <a href="mailto:optimacodee@gmail.com" class="text-4xl md:text-6xl font-bold hover:text-gray-400 transition-colors">optimacodee@gmail.com</a>
+    </footer>
 
 </body>
 </html>
