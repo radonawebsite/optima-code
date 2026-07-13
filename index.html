@@ -1,58 +1,778 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl" class="scroll-smooth">
+<html lang="fr" dir="ltr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Optima Code | Digital Architecture</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Optima Code | Agence de Développement Web & Solutions Digitales Sur Mesure</title>
+    <!-- Polices Modernes Tech -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;400;700;900&display=swap');
-        body { font-family: 'Inter', sans-serif; background: #0a0a0a; color: #ffffff; }
-        .glass { background: rgba(255, 255, 255, 0.02); backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.05); }
-        .text-gradient { background: linear-gradient(90deg, #ffffff, #666666); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        /* =========================================
+           1. Palettes de Couleurs (Inspirées du Logo)
+           ========================================= */
+        :root {
+            --bg-dark: #0A0714;         /* الأسود الأرجواني الداكن للخلفية */
+            --bg-card: #130F26;         /* ألوان بطاقات اللوغو الداخلية */
+            --primary-neon: #8A3FFC;    /* البنفسجي المشع للوغو */
+            --secondary-glow: #6366F1;  /* أزرق نيوني متناسق */
+            --text-main: #F3F4F6;       /* أبيض فضي ناصع */
+            --text-muted: #9CA3AF;      /* رمادي ناعم للنصوص الثانوية */
+            --gradient-cyber: linear-gradient(135deg, #8A3FFC 0%, #6366F1 100%);
+        }
+
+        /* =========================================
+           2. Styles Généraux
+           ========================================= */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        h1, h2, h3, .nav-logo {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            overflow-x: hidden;
+            perspective: 1000px; /* تفعيل البعد الثالث في الصفحة */
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--bg-dark);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary-neon);
+            border-radius: 10px;
+            border: 2px solid var(--bg-dark);
+        }
+
+        /* =========================================
+           3. Header / Navbar Luxueuse
+           ========================================= */
+        header {
+            background-color: rgba(10, 7, 20, 0.85);
+            backdrop-filter: blur(12px);
+            padding: 15px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(138, 63, 252, 0.15);
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .logo-container img {
+            height: 50px;
+            width: 50px;
+            object-fit: contain;
+            filter: drop-shadow(0 0 8px var(--primary-neon));
+        }
+
+        .nav-logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-main);
+            letter-spacing: 1px;
+        }
+
+        .nav-logo span {
+            color: var(--primary-neon);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 35px;
+        }
+
+        nav ul li a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: var(--primary-neon);
+            text-shadow: 0 0 10px rgba(138, 63, 252, 0.5);
+        }
+
+        /* =========================================
+           4. Section Principale (Hero) + Effets 3D
+           ========================================= */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 140px 8% 80px 8%;
+            max-width: 1400px;
+            margin: 0 auto;
+            gap: 50px;
+        }
+
+        .hero-text {
+            flex: 1.2;
+            max-width: 650px;
+        }
+
+        .badge-promo {
+            display: inline-flex;
+            align-items: center;
+            background: rgba(138, 63, 252, 0.1);
+            border: 1px solid rgba(138, 63, 252, 0.3);
+            color: #C084FC;
+            padding: 6px 16px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 25px;
+            letter-spacing: 0.5px;
+        }
+
+        .hero-text h1 {
+            font-size: 4rem;
+            font-weight: 700;
+            line-height: 1.15;
+            margin-bottom: 25px;
+            color: var(--text-main);
+        }
+
+        .hero-text h1 span {
+            background: var(--gradient-cyber);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-text p {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            line-height: 1.8;
+            margin-bottom: 40px;
+        }
+
+        .hero-image-area {
+            flex: 0.8;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* الحاوية التفاعلية ثلاثية الأبعاد للوغو */
+        .tilt-box-container {
+            width: 380px;
+            height: 380px;
+            perspective: 1000px;
+        }
+
+        .tilt-box {
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, #181333 0%, #0A0714 100%);
+            border-radius: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            transform-style: preserve-3d; /* تفعيل العمق للعناصر الداخلية */
+            transition: transform 0.1s ease;
+            border: 1px solid rgba(138, 63, 252, 0.25);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.4), inset 0 0 20px rgba(138, 63, 252, 0.1);
+        }
+
+        .tilt-box img {
+            width: 65%;
+            height: 65%;
+            object-fit: contain;
+            transform: translateZ(50px); /* يجعل اللوغو يطفو خارج الصندوق بالبعد الثالث */
+            filter: drop-shadow(0 15px 30px rgba(138, 63, 252, 0.5));
+            animation: floatingLogo 4s ease-in-out infinite alternate;
+        }
+
+        @keyframes floatingLogo {
+            0% { transform: translateZ(50px) translateY(0px); }
+            100% { transform: translateZ(70px) translateY(-10px); }
+        }
+
+        /* Boutons Professionnels */
+        .cta-group {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .btn-cyber {
+            background: var(--gradient-cyber);
+            color: var(--text-main);
+            padding: 16px 38px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.05rem;
+            box-shadow: 0 10px 25px rgba(138, 63, 252, 0.4);
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-cyber:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 15px 35px rgba(138, 63, 252, 0.6);
+        }
+
+        .btn-outline {
+            border: 2px solid rgba(138, 63, 252, 0.4);
+            color: var(--text-main);
+            padding: 14px 38px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.05rem;
+            transition: all 0.3s ease;
+            background: transparent;
+        }
+
+        .btn-outline:hover {
+            background: rgba(138, 63, 252, 0.1);
+            border-color: var(--primary-neon);
+            transform: translateY(-2px);
+        }
+
+        /* =========================================
+           5. Section Services (Pour PME & E-commerce)
+           ========================================= */
+        .services-section {
+            padding: 100px 8%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-title-center {
+            text-align: center;
+            margin-bottom: 70px;
+        }
+
+        .section-title-center h2 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .section-title-center p {
+            color: var(--text-muted);
+            font-size: 1.15rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        /* كروت ذكية بـ تأثير ثلاثي أبعاد تفاعلي */
+        .service-card-wrap {
+            perspective: 1000px;
+        }
+
+        .service-card {
+            background-color: var(--bg-card);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 45px 35px;
+            height: 100%;
+            transform-style: preserve-3d;
+            transition: transform 0.1s ease, border-color 0.3s ease;
+        }
+
+        .service-card:hover {
+            border-color: rgba(138, 63, 252, 0.4);
+        }
+
+        .service-icon {
+            font-size: 2.5rem;
+            margin-bottom: 25px;
+            display: inline-block;
+            transform: translateZ(30px);
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            transform: translateZ(25px);
+            color: var(--text-main);
+        }
+
+        .service-card p {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+            line-height: 1.7;
+            transform: translateZ(15px);
+        }
+
+        /* =========================================
+           6. Section Portfolio (Ultra-Moderne & Supérieure)
+           ========================================= */
+        .portfolio-section {
+            padding: 100px 8%;
+            max-width: 1400px;
+            margin: 0 auto;
+            background: linear-gradient(180deg, var(--bg-dark) 0%, #0F0B21 50%, var(--bg-dark) 100%);
+        }
+
+        .featured-project-card {
+            background: rgba(19, 15, 38, 0.7);
+            border: 1px solid rgba(138, 63, 252, 0.2);
+            border-radius: 24px;
+            padding: 50px;
+            display: flex;
+            align-items: center;
+            gap: 50px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+            margin-top: 40px;
+            transform-style: preserve-3d;
+        }
+
+        .project-info {
+            flex: 1;
+        }
+
+        .project-tag {
+            color: var(--primary-neon);
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .project-info h3 {
+            font-size: 2.4rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .project-info p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 35px;
+        }
+
+        .project-visual-wrapper {
+            flex: 1.2;
+            perspective: 1000px;
+        }
+
+        /* عرض رائع ومائل للمشروع السابق يظهر الجودة والدقة */
+        .project-screen-mockup {
+            width: 100%;
+            height: 340px;
+            background: linear-gradient(135deg, #1A133A 0%, #2D1B4E 100%);
+            border-radius: 16px;
+            overflow: hidden;
+            border: 2px solid rgba(138, 63, 252, 0.3);
+            box-shadow: -20px 20px 40px rgba(0,0,0,0.5);
+            transform: rotateY(-15px) rotateX(10px);
+            transition: transform 0.5s ease, box-shadow 0.5s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-screen-mockup:hover {
+            transform: rotateY(0deg) rotateX(0deg) scale(1.02);
+            box-shadow: 0 25px 50px rgba(138, 63, 252, 0.25);
+        }
+
+        /* شريط المتصفح الوهمي الفخم */
+        .browser-bar {
+            background: #130F26;
+            padding: 10px 15px;
+            display: flex;
+            gap: 6px;
+            align-items: center;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .browser-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #FF5F56;
+        }
+        .browser-dot:nth-child(2) { background: #FFBD2E; }
+        .browser-dot:nth-child(3) { background: #27C93F; }
+
+        .browser-url {
+            background: rgba(255,255,255,0.05);
+            border-radius: 4px;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            padding: 2px 20px;
+            margin-left: 20px;
+            flex: 1;
+            max-width: 300px;
+        }
+
+        .mockup-body {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #FFF5F5; /* لون موقع ميمورابل ايفنت */
+            color: #0D0D0D;
+            font-weight: 800;
+            font-size: 1.5rem;
+            position: relative;
+        }
+
+        .mockup-content-preview {
+            text-align: center;
+            font-family: sans-serif;
+        }
+        .mockup-content-preview span {
+            color: #D1579B;
+        }
+
+        /* =========================================
+           7. Section Contact / Pied de page (Footer)
+           ========================================= */
+        footer {
+            background-color: #06040C;
+            padding: 100px 8% 40px 8%;
+            border-top: 1px solid rgba(138, 63, 252, 0.2);
+            text-align: center;
+        }
+
+        .footer-box {
+            max-width: 750px;
+            margin: 0 auto 60px auto;
+        }
+
+        .footer-box h2 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .footer-box p {
+            color: var(--text-muted);
+            font-size: 1.2rem;
+            line-height: 1.8;
+            margin-bottom: 40px;
+        }
+
+        .email-link-card {
+            display: inline-flex;
+            align-items: center;
+            gap: 15px;
+            background: rgba(138, 63, 252, 0.08);
+            border: 1px dashed rgba(138, 63, 252, 0.5);
+            padding: 18px 40px;
+            border-radius: 16px;
+            color: var(--text-main);
+            text-decoration: none;
+            font-size: 1.3rem;
+            font-weight: 600;
+            font-family: 'Space Grotesk', sans-serif;
+            transition: all 0.3s ease;
+            letter-spacing: 0.5px;
+        }
+
+        .email-link-card:hover {
+            background: rgba(138, 63, 252, 0.15);
+            border-style: solid;
+            box-shadow: 0 0 30px rgba(138, 63, 252, 0.3);
+            transform: scale(1.03);
+        }
+
+        .footer-divider {
+            height: 1px;
+            background: rgba(255,255,255,0.05);
+            margin-bottom: 40px;
+        }
+
+        .copyright-text {
+            color: rgba(255,255,255,0.3);
+            font-size: 0.95rem;
+        }
+
+        /* =========================================
+           8. Animations de Défilement (Scroll Reveal)
+           ========================================= */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* =========================================
+           9. Responsive Design (PC / Tablet / Mobile)
+           ========================================= */
+        @media (max-width: 1024px) {
+            .hero {
+                flex-direction: column;
+                text-align: center;
+                padding-top: 160px;
+            }
+            .hero-text {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+            .cta-group {
+                justify-content: center;
+            }
+            .featured-project-card {
+                flex-direction: column;
+                padding: 35px 25px;
+            }
+            .project-screen-mockup {
+                transform: none;
+                height: 280px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            header {
+                padding: 15px 5%;
+            }
+            nav {
+                display: none; /* إخفاء القائمة الكلاسيكية في الجوال لتفادي الازدحام */
+            }
+            .hero-text h1 {
+                font-size: 2.8rem;
+            }
+            .section-title-center h2 {
+                font-size: 2.2rem;
+            }
+            .footer-box h2 {
+                font-size: 2.2rem;
+            }
+            .email-link-card {
+                font-size: 1rem;
+                padding: 14px 20px;
+                width: 100%;
+                justify-content: center;
+            }
+            .tilt-box-container {
+                width: 280px;
+                height: 280px;
+            }
+        }
     </style>
 </head>
 <body>
 
-    <!-- Header -->
-    <nav class="max-w-7xl mx-auto px-6 py-8 flex justify-between items-center">
-        <img src="logo.png" alt="Optima Code" class="h-10 w-auto">
-        <a href="mailto:optimacodee@gmail.com" class="text-sm font-light tracking-widest uppercase border-b border-white hover:border-gray-500 transition-all">Contact</a>
-    </nav>
+    <!-- Barre de Navigation -->
+    <header>
+        <a href="#accueil" class="logo-container">
+            <img src="logo.png" alt="Optima Code Logo">
+            <div class="nav-logo">Optima<span>Code</span></div>
+        </a>
+        <nav>
+            <ul>
+                <li><a href="#accueil">Accueil</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
 
-    <!-- Hero -->
-    <main class="max-w-7xl mx-auto px-6 py-24">
-        <section class="mb-32">
-            <h1 class="text-6xl md:text-9xl font-black mb-10 leading-none">
-                <span class="text-gradient">OPTIMA</span><br>
-                <span class="text-gray-500">CODE</span>
-            </h1>
-            <p class="max-w-xl text-xl font-light text-gray-400">
-                نحن لا نبني مجرد مواقع، نحن نصمم بنية تحتية رقمية ترفع من قيمة مشروعك. دقة في التنفيذ، رؤية في التصميم.
-            </p>
-        </section>
-
-        <!-- Services -->
-        <section class="grid md:grid-cols-2 gap-px bg-gray-900 border border-gray-900">
-            <div class="p-12 bg-[#0a0a0a] hover:bg-[#111] transition-colors">
-                <h2 class="text-xs tracking-[0.2em] text-gray-500 uppercase mb-6">01. Development</h2>
-                <h3 class="text-3xl font-bold mb-4">هندسة المواقع</h3>
-                <p class="text-gray-400 leading-relaxed">تطوير برمجيات تعتمد على السرعة، الأمان، وقابلية التوسع المستقبلي.</p>
+    <!-- Section Accueil (Hero) -->
+    <section class="hero" id="accueil">
+        <div class="hero-text">
+            <div class="badge-promo">✦ Propulsez votre business en 2026</div>
+            <h1>Des sites internet d'élite pour <span>votre entreprise</span></h1>
+            <p>Optima Code est une agence spécialisée dans la création de plateformes web haut de gamme. Nous aidons les petites entreprises, indépendants et boutiques e-commerce à s’imposer sur le marché grâce à des designs captivants, une vitesse fulgurante et une structure optimisée pour maximiser vos ventes.</p>
+            <div class="cta-group">
+                <a href="#contact" class="btn-cyber">Lancer mon projet</a>
+                <a href="#portfolio" class="btn-outline">Découvrir nos travaux</a>
             </div>
+        </div>
+        
+        <!-- صندوق التحريك التفاعلي ثلاثي الأبعاد للوغو -->
+        <div class="hero-image-area">
+            <div class="tilt-box-container">
+                <div class="tilt-box" id="logoTilt">
+                    <img src="logo.png" alt="Optima Code Neon 3D Logo">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Services -->
+    <section class="services-section" id="services">
+        <div class="section-title-center reveal">
+            <h2>Ce que nous bâtissons pour vous</h2>
+            <p>Ne vous contentez pas d'un simple site web. Obtenez un outil d'acquisition client performant, fluide et entièrement sur mesure.</p>
+        </div>
+
+        <div class="services-grid">
+            <!-- Service 1 -->
+            <div class="service-card-wrap">
+                <div class="service-card interactive-tilt">
+                    <div class="service-icon">🌐</div>
+                    <h3>Sites Vitrines de Prestige</h3>
+                    <p>Idéal pour les PME et professionnels. Nous concevons une identité visuelle forte et épurée qui capte immédiatement la confiance de vos visiteurs et valorise votre expertise.</p>
+                </div>
+            </div>
+
+            <!-- Service 2 -->
+            <div class="service-card-wrap">
+                <div class="service-card interactive-tilt">
+                    <div class="service-icon">🛍️</div>
+                    <h3>Boutiques E-commerce High-Tech</h3>
+                    <p>Transformez vos visiteurs en acheteurs. Des tunnels de commande fluides, un chargement ultra-rapide sur mobile, et une gestion de stock simplifiée pour faire décoller votre chiffre d'affaires.</p>
+                </div>
+            </div>
+
+            <!-- Service 3 -->
+            <div class="service-card-wrap">
+                <div class="service-card interactive-tilt">
+                    <div class="service-icon">⚡</div>
+                    <h3>Optimisation & Performance</h3>
+                    <p>Un code propre et ultra-sécurisé. Nous injectons les meilleures pratiques SEO pour positionner votre marque en tête des résultats de recherche Google.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Portfolio (المشاريع) -->
+    <section class="portfolio-section" id="portfolio">
+        <div class="section-title-center reveal">
+            <h2>Nos Réalisations Récentes</h2>
+            <p>Découvrez comment nous traduisons les visions de nos clients en expériences numériques immersives de haut niveau.</p>
+        </div>
+
+        <!-- عرض احترافي لموقع ميمورابل ايفنت -->
+        <div class="featured-project-card reveal">
+            <div class="project-info">
+                <span class="project-tag">Étude de Cas : Événementiel de Luxe</span>
+                <h3>Memorable Events</h3>
+                <p>Création complète d'une plateforme web haut de gamme pour une agence d'organisation d'événements prestigieux. Intégration d'animations fluides au défilement (Scroll Animations), d'une structure entièrement adaptative (Responsive) et d'une esthétique raffinée pour séduire une clientèle exclusive.</p>
+                <a href="https://obtimacode.github.io/memorable-events/" target="_blank" class="btn-cyber">Visiter la plateforme active</a>
+            </div>
+
+            <div class="project-visual-wrapper">
+                <div class="project-screen-mockup">
+                    <div class="browser-bar">
+                        <div class="browser-dot"></div>
+                        <div class="browser-dot"></div>
+                        <div class="browser-dot"></div>
+                        <div class="browser-url">memorable-events.pages.dev</div>
+                    </div>
+                    <div class="mockup-body">
+                        <div class="mockup-content-preview">
+                            Memorable <span>Events</span>
+                            <div style="font-size:0.7rem; font-weight:400; color:#555; margin-top:5px;">L'excellence dans l'organisation de fêtes</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Contact (Footer) -->
+    <footer id="contact">
+        <div class="footer-box reveal">
+            <h2>Prêt à dominer votre secteur ?</h2>
+            <p>Discutons de vos objectifs. Que vous ayez besoin d'un site web à partir de zéro ou d'une refonte complète, notre équipe est là pour transformer vos idées en lignes de code performantes.</p>
             
-            <div class="p-12 bg-[#0a0a0a] hover:bg-[#111] transition-colors">
-                <h2 class="text-xs tracking-[0.2em] text-gray-500 uppercase mb-6">02. Strategy</h2>
-                <h3 class="text-3xl font-bold mb-4">الهوية البصرية</h3>
-                <p class="text-gray-400 leading-relaxed">بناء شخصية رقمية تفرض وجودها في السوق وتجذب الفئة المستهدفة.</p>
-            </div>
-        </section>
-    </main>
+            <!-- بريد التواصل المطلق -->
+            <a href="mailto:optimacodee@gmail.com" class="email-link-card">
+                <span>📩 optimacodee@gmail.com</span>
+            </a>
+        </div>
 
-    <!-- Footer -->
-    <footer class="max-w-7xl mx-auto px-6 py-20 border-t border-gray-900 text-center">
-        <p class="text-gray-600 mb-8">OPTIMA CODE © 2026</p>
-        <a href="mailto:optimacodee@gmail.com" class="text-4xl md:text-6xl font-bold hover:text-gray-400 transition-colors">optimacodee@gmail.com</a>
+        <div class="footer-divider"></div>
+        <p class="copyright-text">&copy; 2026 Optima Code. Tous droits réservés. L'ingénierie web au service de votre croissance.</p>
     </footer>
+
+    <!-- Script JavaScript للتحريكات التفاعلية الـ 3D (Interactive Tilt Effect) -->
+    <script>
+        // 1. تحريك اللوغو الرئيسي بالماوس ثلاثي الأبعاد
+        const logoTilt = document.getElementById('logoTilt');
+        if(logoTilt) {
+            window.addEventListener('mousemove', (e) => {
+                let xAxis = (window.innerWidth / 2 - e.pageX) / 25;
+                let yAxis = (window.innerHeight / 2 - e.pageY) / 25;
+                logoTilt.style.transform = `rotateY(${xAxis}deg) rotateX(${yAxis}deg)`;
+            });
+            
+            // إعادة اللوغو لوضعه الأصلي عند خروج الماوس
+            window.addEventListener('mouseleave', () => {
+                logoTilt.style.transform = `rotateY(0deg) rotateX(0deg)`;
+                logoTilt.style.transition = "transform 0.5s ease";
+            });
+            window.addEventListener('mouseenter', () => {
+                logoTilt.style.transition = "none";
+            });
+        }
+
+        // 2. تحريك كروت الخدمات بشكل تفاعلي ثلاثي الأبعاد منفصل عند تمرير الماوس فوقها
+        const cards = document.querySelectorAll('.interactive-tilt');
+        cards.forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left; 
+                const y = e.clientY - rect.top; 
+                const xc = rect.width / 2;
+                const yc = rect.height / 2;
+                const angleX = (yc - y) / 10;
+                const angleY = (x - xc) / 10;
+                card.style.transform = `rotateX(${angleX}deg) rotateY(${angleY}deg) translateY(-5px)`;
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = `rotateX(0deg) rotateY(0deg) translateY(0px)`;
+            });
+        });
+
+        // 3. تحريك العناصر عند النزول بالصفحة (Scroll Reveal)
+        const revealElements = document.querySelectorAll('.reveal');
+        const scrollReveal = () => {
+            revealElements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                if (elementTop < windowHeight - 100) {
+                    element.classList.add('active');
+                }
+            });
+        };
+        window.addEventListener('scroll', scrollReveal);
+        window.addEventListener('load', scrollReveal); // تشغيل عند تحميل الصفحة أول مرة
+    </script>
 
 </body>
 </html>
